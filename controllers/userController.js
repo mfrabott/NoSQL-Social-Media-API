@@ -1,6 +1,6 @@
-// ObjectId() method for converting studentId string into an ObjectId for querying database
+// ObjectId() method for converting userId string into an ObjectId for querying database
 const { ObjectId } = require('mongoose').Types;
-const { Thought, User } = require('../models');
+const { User } = require('../models');
 
 // // TODO: Create an aggregate function to get the number of students overall
 // const headCount = async () =>
@@ -41,12 +41,7 @@ module.exports = {
   getUsers(req, res) {
     User.find()
       .then(async (students) => {
-        const userObj = {
-          users,
-
-          //??????????
-          // headCount: await headCount(),
-        };
+        const userObj = { users };
         return res.json(userObj);
       })
       .catch((err) => {
@@ -58,24 +53,18 @@ module.exports = {
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
       .select('-__v')
-      
-      // ????????????????????
       .lean()
       .then(async (user) =>
         !user
           ? res.status(404).json({ message: 'No user with that ID' })
-          : res.json({
-              user,
-
-              // ??????????
-              // grade: await grade(req.params.studentId),
-            })
+          : res.json({ user })
       )
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
       });
   },
+
   // create a new user
   createUser(req, res) {
     User.create(req.body)
@@ -83,26 +72,28 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // TODO: Delete a user and remove thoughts
+
+  // delete a user and remove thoughts
   deleteUser(req, res) {
     User.findOneAndRemove({ _id: req.params.userId })
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No such user exists' })
-          : Course.findOneAndUpdate(
+          
+          // TODO: remove thoughts
+          // : Thought.findOneAndRemove(
             
-            // TODO: ???
-              { users: req.params.userId },
-              { $pull: { users: req.params.userId } },
-              { new: true }
-            )
-      )
-      .then((thought) =>
-        !thought
-          ? res.status(404).json({
-              message: 'User deleted, but no thoughts found',
-            })
-          : res.json({ message: 'Student successfully deleted' })
+          //     { users: req.params.userId },
+          //     { $pull: { users: req.params.userId } },
+          //     { new: true }
+          //   )
+      // )
+      // .then((thought) =>
+        // !thought
+          // ? res.status(404).json({
+              // message: 'User deleted, but no thoughts found',
+            // })
+          : res.json({ message: 'User successfully deleted' })
       )
       .catch((err) => {
         console.log(err);
