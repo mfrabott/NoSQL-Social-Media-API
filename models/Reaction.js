@@ -28,4 +28,6 @@ const reactionSchema = new Schema(
   }
 );
 
+// TODO: Date Getter formatter
+
 module.exports = reactionSchema;

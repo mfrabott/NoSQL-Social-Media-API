@@ -18,8 +18,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      // TODO: VALIDATE EMAIL
-      
+      validate: {
+        validator: () => Promise.resolve(false),
+        message: 'Email validation failed'
+      }
     },
     thoughts: [thoughtSchema],
     friends: [userSchema],
@@ -27,6 +29,7 @@ const userSchema = new Schema(
   {
     toJSON: {
       getters: true,
+      virtuals: true,
     },
   }
 );
