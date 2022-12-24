@@ -4,10 +4,10 @@ const thoughtSchema = require('./Thought');
 // Schema to create Student model
 const userSchema = new Schema(
   {
-    userId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
+    // userId: {
+    //   type: Schema.Types.ObjectId,
+    //   default: () => new Types.ObjectId(),
+    // },
     username: {
       type: String, 
       trim: true,
@@ -18,10 +18,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      validate: {
-        validator: () => Promise.resolve(false),
-        message: 'Email validation failed'
-      }
+      // validate: {
+      //   validator: () => Promise.resolve(false),
+      //   message: 'Email validation failed'
+      // }
     },
     thoughts: [
       {
@@ -41,6 +41,7 @@ const userSchema = new Schema(
       getters: true,
       virtuals: true,
     },
+    id: false,
   }
 );
 
