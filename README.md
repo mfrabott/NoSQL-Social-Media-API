@@ -1,56 +1,49 @@
-# Module 18 Mini-Project: Student Statistics Back-End
+# NoSQL Social Media API
 
-In this activity, you will start with an existing codebase for a mostly complete application.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-You will be adding aggregate methods to the `Student` controller to show a student's overall grade and the number of students.
+## Table of Contents
 
-Finally, you will spend the remaining time deploying the application using MongoDB Atlas and Heroku.
+[Project Description](#Project-Description)
 
-## Instructions
+[Installation Instructions](#Installation)
 
-The completed application should meet the following criteria:
+[Usage Information](#Usage)
 
-* As a user, I want to be able to view all the students and get a total of the number of students enrolled.
+[License](#License)
 
-* As a user, I want to be able to view a specific student's overall grade in the class using MongoDB operators and their score on each assignment.
+[Contributing](#Contributing)
 
-* As a user, I want to be able to execute create, read, update, and delete operations on `courses`, `students`, and `assignments`.
+[Questions](#Questions)
 
-### Specifications
+## Project Description
 
-The completed application should meet the following specifications:
+This is the backend foundation of a social media application utilizing express and mongoDB/mongoose. The application allows users to be created and comment and react to thoughts and add and remove friends.
 
-* The application must make use of a MongoDB database, the Mongoose ODM, and Express.js.
+## Installation
 
-* The database must be seeded with sample data.
+Clone the repository, install npm packages, create users as shown in the walkthrough video.
 
-* The `Student` controller should have a `headCount` aggregate function to get the total number of students by making use of MongoDB aggregate operators.
+Repository at: https://github.com/mfrabott/NoSQL-Social-Media-API
 
-* The `Student` controller should have a `grade` aggregate function that returns a single student and also the student's overall grade using MongoDB aggregate operators.
+## Usage
 
-* The project will require research of MongoDB operators such as `$addToSet`, `$unwind`, `$group`, `$match`, and `$avg`.
+This is a good foundation for a social media platform backend.
 
-* `Student` lookup will require use of the `ObjectId()` method.
+## License
 
-* The endpoints `api/students/<student id>` and `api/students/` should be tested using Insomnia to ensure that the aggregate functions return the student's overall grade and headcount respectively.
+This project is covered under the MIT License.
 
-* This back-end application should be deployed using Heroku and MongoDB Atlas. Refer to the resources below for further instructions.
+## Contributing
 
-## 💡 Hints
+Contact me below!
 
-* Be sure to run `npm run seed` to seed your database before testing with Insomnia.
+## Questions
 
-* Run `npm run dev` to have the server automatically restart whenever changes are saved.
+Find more of my work at: https://github.com/mfrabott
 
-* How can we use the `$avg` [MongoDB operator](https://docs.mongodb.com/manual/reference/operator/aggregation/avg/) to calculate the overall grade for a student?
+For any questions, please contact me at: michael.frabott@gmail.com
 
-* How can we use the `ObjectId` [Mongoose `Type` method](https://mongoosejs.com/docs/schematypes.html#objectids) to ensure we are able to query a student based on the value in their `_id` field?
+## Walkthrough Video
 
-* How can we use the information from [The Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/mongodb/deploy-with-heroku-and-mongodb-atlas) to help deploy the mini-project?
-
-## 🏆 Bonus
-
-* What is the difference between Mongoose and MongoDB? What are the advantages and disadvantages of both?
-
----
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+https://drive.google.com/file/d/1FA1LknHOMX_sTLmWDT4SgaKvsofrSJ_R/view
