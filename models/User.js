@@ -1,13 +1,9 @@
 const { Schema, model, Types } = require('mongoose');
-const thoughtSchema = require('./Thought');
+const validator = require('validator');
 
 // Schema to create Student model
 const userSchema = new Schema(
   {
-    // userId: {
-    //   type: Schema.Types.ObjectId,
-    //   default: () => new Types.ObjectId(),
-    // },
     username: {
       type: String, 
       trim: true,
@@ -18,10 +14,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      // validate: {
-      //   validator: () => Promise.resolve(false),
-      //   message: 'Email validation failed'
-      // }
+      validate:{
+        validator: validator.isEmail,
+        message: `You have not entered a valid email address`,
+        isAsync: false
+      }
     },
     thoughts: [
       {
