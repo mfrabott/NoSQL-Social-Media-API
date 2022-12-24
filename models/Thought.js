@@ -14,6 +14,7 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: value => value.toString()
     },
   },
   {
@@ -35,6 +36,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: value => value.toString()
     },
     username: {
       type: String,
@@ -51,10 +53,11 @@ const thoughtSchema = new Schema(
   }
 );
 
-// Create a virtual property `friendCount` that gets the number of the user's friends
+// Create a virtual property `reactionCount` that gets the number of the thought's reactions
 thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
+
 
 const Thought = model('thought', thoughtSchema);
 
